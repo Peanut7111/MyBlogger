@@ -1,0 +1,771 @@
+/* 塞尔达风格博客样式 */
+
+:root {
+  /* 塞尔达配色 */
+  --zelda-green: #7cb342;
+  --zelda-green-dark: #388e3c;
+  --zelda-green-light: #aed581;
+  --zelda-gold: #ffd700;
+  --zelda-gold-dark: #ffb300;
+  --zelda-brown: #8b4513;
+  --zelda-brown-light: #d4a574;
+  --zelda-cream: #fff8e1;
+  --zelda-dark: #1a1a1a;
+  --zelda-heart: #e53935;
+
+  /* 游戏UI边框 */
+  --border-light: #ffd700;
+  --border-dark: #8b4513;
+  --border-width: 4px;
+
+  /* 背景虚化控制 */
+  --bg-blur: 50px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 海拉鲁背景 - Link苏醒俯瞰大陆的意境 */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 背景图片层 */
+.body-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* 塞尔达主题背景图片 */
+  background-image: url('/images/塞尔达-林克.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* 默认 50% 虚化效果，使用CSS变量控制 */
+  filter: blur(var(--bg-blur));
+  transform: scale(1.1); /* 放大以避免虚化边缘露白 */
+  transition: filter 0.5s ease;
+}
+
+/* 覆盖层，让文字更清晰 */
+.body-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  /* 让鼠标事件穿透覆盖层，以便触发背景的hover效果 */
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 顶部导航栏 */
+.zelda-header {
+  background: linear-gradient(180deg, var(--zelda-gold) 0%, var(--zelda-gold-dark) 100%);
+  padding: 20px 0;
+  border-bottom: var(--border-width) solid var(--border-dark);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.zelda-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid var(--zelda-green);
+  pointer-events: none;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--zelda-dark);
+  text-shadow: 2px 2px 0 var(--zelda-gold-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.triforce-icon {
+  width: 40px;
+  height: 35px;
+  position: relative;
+}
+
+.triforce-icon::before,
+.triforce-icon::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 35px solid var(--zelda-gold-dark);
+}
+
+.triforce-icon::before {
+  top: 0;
+  left: 0;
+}
+
+.triforce-icon::after {
+  top: 0;
+  right: 0;
+}
+
+.zelda-nav a {
+  color: var(--zelda-dark);
+  text-decoration: none;
+  padding: 10px 20px;
+  background: var(--zelda-green);
+  border: 2px solid var(--border-dark);
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s;
+  display: inline-block;
+  margin: 5px;
+}
+
+.zelda-nav a:hover {
+  background: var(--zelda-green-light);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* 主内容区 */
+.main-content {
+  padding: 30px;
+  margin-top: 20px;
+  position: relative;
+}
+
+/* 文章列表卡片 */
+.post-item {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--zelda-gold);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.post-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+  border-color: var(--zelda-green);
+}
+
+.post-title {
+  font-size: 1.5rem;
+  margin: 0 0 10px 0;
+  color: #1a1a1a;
+}
+
+.post-title a {
+  color: var(--zelda-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-title a::before {
+  content: '⚔';
+  font-size: 1.2rem;
+}
+
+.post-meta {
+  color: #4a4a4a;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.post-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.post-summary {
+  color: #3a3a3a;
+  line-height: 1.6;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 20px;
+  background: var(--zelda-gold);
+  color: var(--zelda-dark);
+  text-decoration: none;
+  border: 2px solid var(--border-dark);
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.read-more:hover {
+  background: var(--zelda-gold-dark);
+  transform: scale(1.05);
+}
+
+.read-more::after {
+  content: ' ➜';
+}
+
+/* 文章详情页 - 双栏布局 */
+.article-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.article-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.article-toc {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  background: transparent;
+  border: 2px solid var(--zelda-gold);
+  border-radius: 10px;
+  padding: 15px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.toc-title {
+  font-weight: bold;
+  color: var(--zelda-gold);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--zelda-gold);
+  font-size: 1rem;
+}
+
+.article-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.article-toc li {
+  padding: 4px 0;
+}
+
+.article-toc a {
+  color: #d4cdc0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.article-toc a:hover {
+  background: var(--zelda-green-dark);
+  color: #f0e6d3;
+}
+
+.article-toc ul ul a {
+  padding-left: 20px;
+  font-size: 0.85rem;
+}
+
+[data-theme="dark"] .article-toc {
+  background: transparent;
+}
+
+[data-theme="dark"] .toc-title {
+  color: var(--zelda-gold);
+}
+
+[data-theme="dark"] .article-toc a {
+  color: #d4cdc0;
+}
+
+[data-theme="dark"] .article-toc a:hover {
+  background: var(--zelda-green-dark);
+  color: #f0e6d3;
+}
+
+@media (max-width: 900px) {
+  .article-layout {
+    flex-direction: column;
+  }
+  .article-toc {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+}
+
+/* 浅色模式 - 标题金色，其他全白 */
+[data-theme="light"] .home-title {
+  color: var(--zelda-gold) !important;
+}
+
+[data-theme="light"] .article-title {
+  color: var(--zelda-gold) !important;
+}
+
+[data-theme="light"] .article-toc .toc-title {
+  color: var(--zelda-gold) !important;
+}
+
+[data-theme="light"] .post-title a {
+  color: var(--zelda-gold) !important;
+}
+
+[data-theme="light"] .article-content h1,
+[data-theme="light"] .article-content h2,
+[data-theme="light"] .article-content h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] body {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+[data-theme="light"] .article-content p,
+[data-theme="light"] .article-content li,
+[data-theme="light"] .article-content {
+  color: #ffffff !important;
+  text-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+[data-theme="light"] .article-content p,
+[data-theme="light"] .article-content li,
+[data-theme="light"] .article-content {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .post-summary {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .home-intro p {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .post-title {
+  color: var(--zelda-gold) !important;
+}
+
+[data-theme="light"] .post-meta,
+[data-theme="light"] .article-meta {
+  color: #d0d0d0 !important;
+}
+
+/* 文章详情页 */
+.article-header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 3px solid var(--border-light);
+  margin-bottom: 30px;
+}
+
+.article-title {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin: 0 0 15px 0;
+  text-shadow: 1px 1px 0 var(--zelda-gold);
+}
+
+.article-meta {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #4a4a4a;
+  flex-wrap: wrap;
+}
+
+.article-content {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+  color: #1a1a1a;
+  border-bottom: 2px solid var(--zelda-gold);
+  padding-bottom: 5px;
+}
+
+.article-content p {
+  color: #2a2a2a;
+}
+
+.article-content li {
+  color: #2a2a2a;
+}
+
+.article-content code {
+  background: rgba(0,0,0,0.2);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+}
+
+.article-content pre {
+  background: rgba(0,0,0,0.3);
+  border: 3px solid var(--zelda-gold);
+  border-radius: 8px;
+  padding: 15px;
+  overflow-x: auto;
+}
+
+.article-content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* 代码块行号样式（心形生命值） */
+.article-content .chroma .ln {
+  display: inline-block;
+  width: 2.5em;
+  padding-right: 1em;
+  text-align: right;
+  user-select: none;
+}
+
+.article-content .chroma .ln::before {
+  content: '♥';
+  opacity: 0.5;
+}
+
+/* 页脚 */
+.zelda-footer {
+  background: linear-gradient(180deg, var(--zelda-green-dark) 0%, #1b5e20 100%);
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: var(--border-width) solid var(--zelda-gold);
+  text-align: center;
+  color: #fff8e1;
+}
+
+.footer-content p {
+  margin: 5px 0;
+}
+
+/* 心形装饰 */
+.heart-decoration::before,
+.heart-decoration::after {
+  content: '♥ ';
+  color: var(--zelda-heart);
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Posts区域样式 */
+.posts-section {
+  position: relative;
+  margin-top: 20px;
+}
+
+.posts-toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--zelda-gold);
+  border: 3px solid var(--zelda-brown);
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.posts-toggle:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  background: #ffe44d;
+}
+
+.triangle-icon {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 14px solid var(--zelda-dark);
+  transition: transform 0.3s ease;
+  margin-top: -2px;
+}
+
+/* 收起状态 */
+.posts-section.collapsed .posts-content {
+  display: none;
+}
+
+.posts-section.collapsed .triangle-icon {
+  transform: rotate(180deg);
+}
+
+/* Posts内容区域 */
+.posts-content {
+  transition: all 0.3s ease;
+}
+
+/* ========== 深色/浅色模式 ========== */
+[data-theme="light"] {
+  --zelda-cream: #ffffff;
+}
+
+[data-theme="dark"] {
+  --zelda-green: #6a9b3a;
+  --zelda-green-dark: #3d6b1f;
+  --zelda-green-light: #8abf55;
+  --zelda-gold: #f0c200;
+  --zelda-gold-dark: #c9a000;
+  --zelda-brown: #8b5a2b;
+  --zelda-brown-light: #a0724a;
+  --zelda-cream: #f0e6d3;
+  --zelda-dark: #0f0f0f;
+  --zelda-heart: #ff6b6b;
+  --border-light: #f0c200;
+  --border-dark: #5a3a1a;
+  --bg-overlay-dark: rgba(15, 15, 15, 0.75);
+}
+
+[data-theme="dark"] body {
+  background-color: #0f0f0f;
+  color: var(--zelda-cream);
+}
+
+[data-theme="dark"] .body-bg {
+  filter: blur(var(--bg-blur)) brightness(0.4);
+}
+
+[data-theme="dark"] .body-overlay {
+  background: transparent;
+  backdrop-filter: blur(4px);
+}
+
+[data-theme="dark"] .main-content,
+[data-theme="dark"] .post-item {
+  background: transparent;
+}
+
+[data-theme="dark"] .main-content::before {
+  border-color: var(--zelda-green);
+}
+
+[data-theme="dark"] .post-title,
+[data-theme="dark"] .post-title a,
+[data-theme="dark"] .article-title,
+[data-theme="dark"] .article-content h1,
+[data-theme="dark"] .article-content h2,
+[data-theme="dark"] .article-content h3 {
+  color: var(--zelda-cream);
+}
+
+[data-theme="dark"] .post-meta,
+[data-theme="dark"] .article-meta,
+[data-theme="dark"] .post-summary,
+[data-theme="dark"] .article-content p,
+[data-theme="dark"] .article-content li {
+  color: #d4cdc0;
+}
+
+[data-theme="dark"] .article-content code {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .article-content pre {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .zelda-header {
+  background: linear-gradient(180deg, #3d3d00 0%, #2a2a00 100%);
+}
+
+[data-theme="dark"] .site-title {
+  color: var(--zelda-gold);
+  text-shadow: 2px 2px 0 #1a1a00;
+}
+
+[data-theme="dark"] .zelda-nav a {
+  background: var(--zelda-green-dark);
+  color: #f0e6d3;
+  border-color: #5a3a1a;
+}
+
+[data-theme="dark"] .zelda-nav a:hover {
+  background: var(--zelda-green);
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .zelda-footer {
+  background: linear-gradient(180deg, #1a3d10 0%, #0d1f08 100%);
+}
+
+[data-theme="dark"] .read-more {
+  background: var(--zelda-gold-dark);
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .read-more:hover {
+  background: var(--zelda-gold);
+}
+
+/* 首页标题 - 覆盖内联样式 */
+[data-theme="dark"] .home-title {
+  color: var(--zelda-gold) !important;
+}
+
+/* 深色模式导航链接 */
+[data-theme="dark"] .zelda-nav a {
+  background: var(--zelda-green-dark);
+  color: #f0e6d3;
+  border-color: #5a3a1a;
+}
+
+[data-theme="dark"] .zelda-nav a:hover {
+  background: var(--zelda-green);
+  color: #1a1a1a;
+}
+
+/* 深色模式页脚链接 */
+[data-theme="dark"] .zelda-footer a {
+  color: var(--zelda-gold);
+}
+
+/* 深色模式博客介绍文字 - 覆盖内联样式 */
+[data-theme="dark"] .home-intro p {
+  color: #d4cdc0 !important;
+}
+
+/* 深色模式副标题 description */
+[data-theme="dark"] .site-description {
+  color: #c0b8a8 !important;
+}
+
+/* 深色模式各页面 h1 标题 - 覆盖内联 color:#1a1a1a */
+[data-theme="dark"] .main-content h1 {
+  color: var(--zelda-gold) !important;
+}
+
+/* 深色模式文章列表页小标题 */
+[data-theme="dark"] .main-content h2 {
+  color: var(--zelda-cream) !important;
+}
+
+/* 深色模式标签云、归档页标题 */
+[data-theme="dark"] .tag-cloud ~ h2,
+[data-theme="dark"] .timeline {
+  color: var(--zelda-gold);
+}
+
+/* 深色模式空状态文字 */
+[data-theme="dark"] .main-content > p {
+  color: #c0b8a8 !important;
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--zelda-brown);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 1.5rem;
+  }
+
+  .zelda-nav a {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .article-title {
+    font-size: 1.5rem;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}

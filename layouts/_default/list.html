@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/css/zelda.css">
+</head>
+<body>
+    <!-- 海拉鲁大陆背景 -->
+    <div class="body-bg"></div>
+    <div class="body-overlay"></div>
+
+    {{ partial "header.html" . }}
+
+    <div class="container">
+        <main class="main-content">
+            <h1 style="text-align: center; color: #1a1a1a; margin-bottom: 30px;">
+                📚 {{ .Title }}
+            </h1>
+
+            {{ range .Pages }}
+                <article class="post-item">
+                    <h2 class="post-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h2>
+                    <div class="post-meta">
+                        <span>📅 {{ .Date.Format "2006-01-02" }}</span>
+                        {{ if .Params.tags }}
+                        <span>🏷️ {{ delimit .Params.tags ", " }}</span>
+                        {{ end }}
+                        {{ if gt .ReadingTime 0 }}
+                        <span>⏱️ {{ .ReadingTime }}分钟</span>
+                        {{ end }}
+                    </div>
+                    {{ if or .Description .Summary }}
+                    <p class="post-summary">{{ or .Description .Summary }}</p>
+                    {{ end }}
+                    <a href="{{ .Permalink }}" class="read-more">阅读全文</a>
+                </article>
+            {{ else }}
+                <p style="text-align: center; color: #3a3a3a;">
+                    暂无文章...
+                </p>
+            {{ end }}
+        </main>
+    </div>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+        // 背景虚化控制 - 双击切换
+        (function() {
+            var blurred = localStorage.getItem('bgBlur') === 'true';
+            var bodyBg = document.querySelector('.body-bg');
+            var bodyOverlay = document.querySelector('.body-overlay');
+            function applyBlur(blur) {
+                if (bodyBg) bodyBg.style.filter = blur ? 'blur(50px) brightness(0.7)' : 'blur(0)';
+                if (bodyOverlay) bodyOverlay.style.backdropFilter = blur ? 'blur(2px)' : 'blur(0px)';
+            }
+            applyBlur(blurred);
+            document.addEventListener('dblclick', function() {
+                blurred = !blurred;
+                applyBlur(blurred);
+                localStorage.setItem('bgBlur', blurred);
+            });
+        })();
+    </script>
+</body>
+</html>

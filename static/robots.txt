@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://peanut7111.github.io/sitemap.xml

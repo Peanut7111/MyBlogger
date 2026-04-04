@@ -1,0 +1,25 @@
+baseURL: 'https://peanut7111.github.io'
+title: "Peanut的博客"
+author: Peanut
+languageCode: zh-cn
+theme: ""
+
+# 分页设置
+pagination:
+  pagerSize: 10
+  path: "page"
+
+# 分类和标签
+taxonomies:
+  tag: "tags"
+  category: "categories"
+
+params:
+  description: "记录学习Claude Code进行vibe coding的过程"
+  subtitle: "Vibe Coding Journey"
+
+markup:
+  highlight:
+    style: github
+    lineNos: true
+    lineNumbersInTable: true

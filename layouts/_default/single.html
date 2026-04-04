@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/css/zelda.css">
+</head>
+<body>
+    <div class="body-bg"></div>
+    <div class="body-overlay"></div>
+
+    {{ partial "header.html" . }}
+
+    <div class="container">
+        <div class="article-layout">
+            <main class="article-main">
+                <article>
+                    <header class="article-header">
+                        <h1 class="article-title">⚔️ {{ .Title }} ⚔️</h1>
+                        <div class="article-meta">
+                            <span>📅 {{ .Date.Format "2006-01-02" }}</span>
+                            {{ if .Params.tags }}
+                            <span>🏷️ {{ delimit .Params.tags ", " }}</span>
+                            {{ end }}
+                            {{ if gt .ReadingTime 0 }}
+                            <span>⏱️ {{ .ReadingTime }}分钟</span>
+                            {{ end }}
+                        </div>
+                    </header>
+
+                    <div class="article-content">
+                        {{ .Content }}
+                    </div>
+
+                    <div style="margin-top: 40px; padding-top: 20px; border-top: 3px solid var(--zelda-gold);">
+                        <a href="/" class="read-more" style="display: inline-flex; align-items: center;">
+                            ← 返回首页
+                        </a>
+                    </div>
+                </article>
+            </main>
+
+            <aside class="article-toc" id="articleToc">
+                <div class="toc-title">📑 目录</div>
+                {{ if .TableOfContents }}
+                {{ .TableOfContents }}
+                {{ else }}
+                <nav id="TableOfContents"><ul></ul></nav>
+                {{ end }}
+            </aside>
+        </div>
+    </div>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+        // 背景虚化控制 - 双击切换
+        (function() {
+            var blurred = localStorage.getItem('bgBlur') === 'true';
+            var bodyBg = document.querySelector('.body-bg');
+            var bodyOverlay = document.querySelector('.body-overlay');
+            console.log('blur init', blurred, bodyBg, bodyOverlay);
+
+            function applyBlur(blur) {
+                console.log('applyBlur', blur);
+                if (bodyBg) bodyBg.style.filter = blur ? 'blur(50px) brightness(0.7)' : 'blur(0)';
+                if (bodyOverlay) bodyOverlay.style.backdropFilter = blur ? 'blur(2px)' : 'blur(0px)';
+            }
+
+            applyBlur(blurred);
+
+            document.addEventListener('dblclick', function(e) {
+                console.log('dblclick');
+                blurred = !blurred;
+                applyBlur(blurred);
+                localStorage.setItem('bgBlur', blurred);
+            });
+        })();
+
+        // 生成目录
+        (function() {
+            var toc = document.getElementById('articleToc');
+            var nav = document.getElementById('TableOfContents');
+            if (!toc || !nav) return;
+            var headings = document.querySelectorAll('.article-content h2, .article-content h3');
+            if (headings.length === 0) {
+                toc.style.display = 'none';
+                return;
+            }
+            var ul = nav.querySelector('ul');
+            ul.innerHTML = '';
+            for (var i = 0; i < headings.length; i++) {
+                var h = headings[i];
+                if (!h.id) {
+                    h.id = h.textContent.replace(/[^\w\u4e00-\u9fa5]/g, '-').replace(/-+/g, '-');
+                }
+                var li = document.createElement('li');
+                var indent = h.tagName === 'H3' ? ' style="padding-left:16px;font-size:0.85em;"' : '';
+                li.innerHTML = '<a' + indent + ' href="#' + h.id + '">' + h.textContent + '</a>';
+                ul.appendChild(li);
+            }
+        })();
+    </script>
+</body>
+</html>

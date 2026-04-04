@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/css/zelda.css">
+</head>
+<body>
+    <div class="body-bg"></div>
+    <div class="body-overlay"></div>
+
+    {{ partial "header.html" . }}
+
+    <div class="container">
+        <main class="main-content">
+            <h1 style="text-align: center; color: #1a1a1a; margin-bottom: 30px;">
+                📅 {{ .Title }}
+            </h1>
+
+            <div class="timeline">
+                {{ range .Site.RegularPages.GroupByDate "2006" }}
+                <div class="timeline-year">
+                    <div class="timeline-year-badge">{{ .Key }}</div>
+                    <div class="timeline-items">
+                        {{ range .Pages.GroupByDate "January" }}
+                        <div class="timeline-month">
+                            <div class="timeline-month-label">{{ .Key }}</div>
+                            {{ range .Pages }}
+                            <div class="timeline-item">
+                                <div class="timeline-date">{{ .Date.Format "01-02" }}</div>
+                                <div class="timeline-content">
+                                    <h3 class="timeline-title">
+                                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                    </h3>
+                                    <div class="timeline-meta">
+                                        {{ if .Params.tags }}
+                                        <span>🏷️ {{ delimit .Params.tags ", " }}</span>
+                                        {{ end }}
+                                        <span>⏱️ {{ .ReadingTime }}分钟</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </main>
+    </div>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+        (function() {
+            var blurred = localStorage.getItem('bgBlur') === 'true';
+            var bodyBg = document.querySelector('.body-bg');
+            var bodyOverlay = document.querySelector('.body-overlay');
+            function applyBlur(blur) {
+                if (bodyBg) bodyBg.style.filter = blur ? 'blur(50px) brightness(0.7)' : 'blur(0)';
+                if (bodyOverlay) bodyOverlay.style.backdropFilter = blur ? 'blur(2px)' : 'blur(0px)';
+            }
+            applyBlur(blurred);
+            document.addEventListener('dblclick', function() {
+                blurred = !blurred;
+                applyBlur(blurred);
+                localStorage.setItem('bgBlur', blurred);
+            });
+        })();
+    </script>
+
+    <style>
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 8px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, var(--zelda-gold) 0%, var(--zelda-green) 100%);
+        border-radius: 2px;
+    }
+    .timeline-year {
+        margin-bottom: 30px;
+        position: relative;
+    }
+    .timeline-year-badge {
+        position: absolute;
+        left: -38px;
+        top: 0;
+        background: var(--zelda-gold);
+        color: var(--zelda-dark);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        border: 2px solid var(--zelda-brown);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .timeline-items {
+        margin-left: 20px;
+    }
+    .timeline-month {
+        margin-bottom: 20px;
+    }
+    .timeline-month-label {
+        font-size: 1rem;
+        color: var(--zelda-green-dark);
+        font-weight: bold;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border-left: 3px solid var(--zelda-gold);
+    }
+    .timeline-item {
+        display: flex;
+        gap: 15px;
+        padding: 12px 15px;
+        background: rgba(255,255,255,0.7);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        border: 2px solid var(--zelda-gold);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .timeline-item:hover {
+        transform: translateX(5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        border-color: var(--zelda-green);
+    }
+    .timeline-date {
+        min-width: 50px;
+        font-weight: bold;
+        color: var(--zelda-brown);
+        font-size: 0.9rem;
+        text-align: center;
+        padding-top: 3px;
+    }
+    .timeline-title {
+        margin: 0 0 5px 0;
+        font-size: 1.1rem;
+    }
+    .timeline-title a {
+        color: var(--zelda-dark);
+        text-decoration: none;
+    }
+    .timeline-title a:hover {
+        color: var(--zelda-green-dark);
+    }
+    .timeline-meta {
+        font-size: 0.85rem;
+        color: #666;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    [data-theme="dark"] .timeline::before {
+        background: linear-gradient(180deg, var(--zelda-gold-dark) 0%, var(--zelda-green-dark) 100%);
+    }
+    [data-theme="dark"] .timeline-month-label {
+        color: var(--zelda-gold);
+    }
+    [data-theme="dark"] .timeline-date {
+        color: var(--zelda-gold);
+    }
+    [data-theme="dark"] .timeline-item {
+        background: rgba(50,50,50,0.7);
+    }
+    [data-theme="dark"] .timeline-title a {
+        color: var(--zelda-cream);
+    }
+    [data-theme="dark"] .timeline-title a:hover {
+        color: var(--zelda-gold);
+    }
+    [data-theme="dark"] .timeline-meta {
+        color: #a0a0a0;
+    }
+    @media (max-width: 768px) {
+        .timeline {
+            padding-left: 20px;
+        }
+        .timeline::before {
+            left: 3px;
+        }
+        .timeline-year-badge {
+            left: -28px;
+            font-size: 0.9rem;
+            padding: 3px 8px;
+        }
+        .timeline-item {
+            flex-direction: column;
+            gap: 5px;
+        }
+        .timeline-date {
+            text-align: left;
+        }
+    }
+    </style>
+</body>
+</html>
