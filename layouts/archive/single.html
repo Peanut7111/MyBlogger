@@ -74,12 +74,12 @@
     <style>
     .timeline {
         position: relative;
-        padding-left: 30px;
+        padding-left: 0;
     }
     .timeline::before {
         content: '';
         position: absolute;
-        left: 8px;
+        left: 95px;
         top: 0;
         bottom: 0;
         width: 4px;
@@ -87,27 +87,27 @@
         border-radius: 2px;
     }
     .timeline-year {
+        display: flex;
+        align-items: flex-start;
         margin-bottom: 30px;
-        position: relative;
+        padding-left: 0;
     }
     .timeline-year-badge {
-        position: absolute;
-        left: -42px;
-        top: 0;
         background: var(--zelda-gold);
         color: var(--zelda-dark);
-        padding: 5px 16px;
+        padding: 6px 16px;
         border-radius: 20px;
         font-weight: bold;
         font-size: 1.2rem;
         border: 2px solid var(--zelda-brown);
         box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         white-space: nowrap;
-        min-width: 68px;
-        text-align: center;
+        flex-shrink: 0;
+        margin-right: 25px;
+        margin-top: 0;
     }
     .timeline-items {
-        margin-left: 20px;
+        flex: 1;
     }
     .timeline-month {
         margin-bottom: 20px;
@@ -117,7 +117,7 @@
         color: var(--zelda-green-dark);
         font-weight: bold;
         margin-bottom: 10px;
-        padding-left: 10px;
+        padding-left: 15px;
         border-left: 3px solid var(--zelda-gold);
     }
     .timeline-item {
@@ -183,16 +183,19 @@
         color: #a0a0a0;
     }
     @media (max-width: 768px) {
-        .timeline {
-            padding-left: 20px;
-        }
         .timeline::before {
-            left: 3px;
+            left: 75px;
+        }
+        .timeline-year {
+            flex-direction: column;
         }
         .timeline-year-badge {
-            left: -28px;
-            font-size: 0.9rem;
-            padding: 3px 8px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            padding: 4px 14px;
+        }
+        .timeline-items {
+            margin-left: 0;
         }
         .timeline-item {
             flex-direction: column;
