@@ -46,7 +46,7 @@ body {
   height: 100%;
   z-index: -1;
   /* 塞尔达主题背景图片 */
-  background-image: url('./images/zelda-bg.png');
+  background-image: url('/MyBlogger/images/zelda-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
