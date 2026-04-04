@@ -20,7 +20,7 @@
 
             <div class="timeline" style="overflow: hidden;">
                 {{ range .Site.RegularPages.GroupByDate "2006" }}
-                <div class="timeline-year" style="overflow: hidden;">
+                <div class="timeline-year">
                     <div class="timeline-year-badge">{{ .Key }}</div>
                     <div class="timeline-items">
                         {{ range .Pages.GroupByDate "January" }}
@@ -92,18 +92,18 @@
     }
     .timeline-year-badge {
         position: absolute;
-        left: -38px;
+        left: -42px;
         top: 0;
         background: var(--zelda-gold);
         color: var(--zelda-dark);
-        padding: 5px 14px;
+        padding: 5px 16px;
         border-radius: 20px;
         font-weight: bold;
         font-size: 1.2rem;
         border: 2px solid var(--zelda-brown);
         box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         white-space: nowrap;
-        min-width: 52px;
+        min-width: 68px;
         text-align: center;
     }
     .timeline-items {
