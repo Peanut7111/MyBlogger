@@ -46,7 +46,7 @@ body {
   height: 100%;
   z-index: -1;
   /* 塞尔达主题背景图片 */
-  background-image: url('/images/塞尔达-林克.png');
+  background-image: url('./images/塞尔达-林克.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
