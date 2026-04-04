@@ -2,7 +2,6 @@ baseURL: 'https://Peanut7111.github.io/MyBlogger/'
 title: "Peanut的博客"
 author: Peanut
 languageCode: zh-cn
-theme: ""
 
 # 分页设置
 pagination:
