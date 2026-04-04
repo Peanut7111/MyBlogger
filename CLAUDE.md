@@ -32,11 +32,21 @@
 
 ## 常用命令
 ```bash
+# Hugo 路径（不在 PATH 中，每次需用完整路径）
+F:/Claude Code/Project/MyBlogger/tools/hugo.exe
+
+# 本地预览（草稿可见）
+F:/Claude Code/Project/MyBlogger/tools/hugo.exe server -D --baseURL "http://localhost:1313/MyBlogger/"
+
+# Git 操作
 git add -A
 git commit -m "提交说明"
 git push
 # GitHub Actions 自动构建部署，约 1-2 分钟
 ```
+
+## 工具路径
+- **Hugo**: `F:/Claude Code/Project/MyBlogger/tools/hugo.exe`
 
 ## 素材参考
 - [塞尔达传说：王国之泪 Wiki](https://totk.huijiwiki.com/wiki/) — 用于优化网页图标和主题素材
