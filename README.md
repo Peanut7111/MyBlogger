@@ -40,3 +40,7 @@ push 到 GitHub 后，GitHub Actions 自动构建部署到 GitHub Pages。
 - **浅色模式**: 白色文字 + 深色背景
 - **深色模式**: 双击页面可切换
 - **背景虚化**: 双击页面可开启/关闭虚化效果（50% 虚化 + 30% 亮度）
+
+## 素材参考
+
+- [塞尔达传说：王国之泪 Wiki](https://totk.huijiwiki.com/wiki/) — 用于优化网页图标和主题素材

@@ -38,11 +38,14 @@ git push
 # GitHub Actions 自动构建部署，约 1-2 分钟
 ```
 
+## 素材参考
+- [塞尔达传说：王国之泪 Wiki](https://totk.huijiwiki.com/wiki/) — 用于优化网页图标和主题素材
+
 ## 当前状态 / 未完成的事
 （每次新对话先读这里，快速了解上下文）
 
-- 归档页刚完成 Redesign，年份徽章改用 flex 布局（2026-04-05）
-- 背景图已换成 JPG 格式（zelda-bg.jpg），需确认压缩效果
+- 归档页 Redesign 完成，年份徽章用 flex 布局（2026-04-05）
+- 背景图已换成 JPG 格式
 - GitHub Actions 已配置完毕，每次 push 自动部署
 
 ## 已解决的问题（避免重复踩坑）
