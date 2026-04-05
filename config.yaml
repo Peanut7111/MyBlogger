@@ -20,6 +20,6 @@ params:
 
 markup:
   highlight:
-    style: github
+    style: monokai
     lineNos: true
     lineNumbersInTable: true
