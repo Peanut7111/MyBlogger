@@ -5,5 +5,87 @@
         <p style="font-size: 0.9rem; opacity: 0.8;">
             就像林克踏上冒险之路，每一次代码都是新的发现！
         </p>
+        <p style="font-size: 0.85rem; opacity: 0.6; margin-top: 10px;">
+            <img src="{{ "icons/96px-korok.webp" | relURL }}" alt="" style="width:20px;height:20px;vertical-align:middle;margin-right:6px;">每页都有4个呀哈哈！找到它们吧！
+        </p>
     </div>
 </footer>
+
+<!-- 呀哈哈 Easter Egg - 由 JS 随机分布 -->
+<div class="korok-zone"><img src="{{ "icons/96px-korok.webp" | relURL }}" alt="🌿"></div>
+<div class="korok-zone"><img src="{{ "icons/96px-korok.webp" | relURL }}" alt="🌿"></div>
+<div class="korok-zone"><img src="{{ "icons/96px-korok.webp" | relURL }}" alt="🌿"></div>
+<div class="korok-zone"><img src="{{ "icons/96px-korok.webp" | relURL }}" alt="🌿"></div>
+
+<!-- 三角力量传送过渡动画 -->
+<div class="triforce-transition" id="triforceTransition">
+    <div class="triforce-portal">
+        <img src="{{ "icons/Triforce.png" | relURL }}" alt="">
+        <div class="triforce-ring"></div>
+        <div class="triforce-ring"></div>
+        <div class="triforce-ring"></div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // 随机分布呀哈哈，固定在角落和边缘区域，避免遮挡内容
+    var koroks = document.querySelectorAll('.korok-zone');
+    var safeZones = [
+        { x: [2, 12], y: [2, 15] },
+        { x: [88, 98], y: [2, 15] },
+        { x: [1, 8], y: [30, 50] },
+        { x: [92, 99], y: [30, 50] },
+        { x: [2, 12], y: [85, 95] },
+        { x: [88, 98], y: [85, 95] },
+        { x: [5, 15], y: [18, 28] },
+        { x: [85, 95], y: [18, 28] },
+        { x: [15, 25], y: [88, 95] },
+        { x: [75, 85], y: [88, 95] },
+    ];
+
+    koroks.forEach(function(korok, i) {
+        var zone = safeZones[i % safeZones.length];
+        var x = zone.x[0] + Math.random() * (zone.x[1] - zone.x[0]);
+        var y = zone.y[0] + Math.random() * (zone.y[1] - zone.y[0]);
+        korok.style.left = x + '%';
+        korok.style.top = y + '%';
+
+        var locked = false;
+
+        korok.addEventListener('mouseenter', function() {
+            korok.style.opacity = '1';
+            korok.style.transform = 'scale(1.3)';
+        });
+
+        korok.addEventListener('mouseleave', function() {
+            if (!locked) {
+                korok.style.opacity = '0';
+                korok.style.transform = 'scale(1)';
+            }
+        });
+
+        korok.addEventListener('click', function(e) {
+            e.stopPropagation();
+            locked = !locked;
+            if (locked) {
+                korok.style.opacity = '1';
+                korok.style.transform = 'scale(1.3)';
+                korok.classList.add('korok-locked');
+            } else {
+                korok.style.opacity = '0';
+                korok.style.transform = 'scale(1)';
+                korok.classList.remove('korok-locked');
+            }
+        });
+    });
+
+    // 三角力量过渡动画 - 动画结束后移除
+    var transition = document.getElementById('triforceTransition');
+    if (transition) {
+        setTimeout(function() {
+            transition.parentNode.removeChild(transition);
+        }, 550);
+    }
+})();
+</script>

@@ -15,6 +15,11 @@
     <div class="container">
         <main class="main-content">
             <article>
+                <header class="article-header">
+                    <h1 class="article-title">
+                        <img src="{{ "icons/96px-Character.webp" | relURL }}" alt="" style="width:48px;height:48px;vertical-align:middle;margin-right:12px;">{{ .Title }}
+                    </h1>
+                </header>
                 <div class="article-content">
                     {{ .Content }}
                 </div>

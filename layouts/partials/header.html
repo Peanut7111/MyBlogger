@@ -1,15 +1,15 @@
 <header class="zelda-header">
     <div class="container header-content">
         <h1 class="site-title">
-            <span class="triforce-icon"></span>
+            <img src="{{ "icons/Triforce.png" | relURL }}" alt="" class="triforce-icon">
             {{ .Site.Title }}
         </h1>
         <nav class="zelda-nav">
-            <a href="{{ .Site.BaseURL }}">🏠 首页</a>
-            <a href="{{ .Site.BaseURL }}posts/">📝 文章</a>
-            <a href="{{ .Site.BaseURL }}tags/">🏷️ 标签</a>
-            <a href="{{ .Site.BaseURL }}archive/">📅 归档</a>
-            <a href="{{ .Site.BaseURL }}about/">👤 关于</a>
+            <a href="{{ .Site.BaseURL }}"><img src="{{ "icons/96px-Map.webp" | relURL }}" alt="" style="width:24px;height:24px;vertical-align:middle;margin-right:4px;">首页</a>
+            <a href="{{ .Site.BaseURL }}posts/"><img src="{{ "icons/96px-Ancient%20stone%20stele.webp" | relURL }}" alt="" style="width:24px;height:24px;vertical-align:middle;margin-right:4px;">文章</a>
+            <a href="{{ .Site.BaseURL }}tags/"><img src="{{ "icons/96px-Ultimate%20Hand.webp" | relURL }}" alt="" style="width:24px;height:24px;vertical-align:middle;margin-right:4px;">标签</a>
+            <a href="{{ .Site.BaseURL }}archive/"><img src="{{ "icons/96px-Blueprint.webp" | relURL }}" alt="" style="width:24px;height:24px;vertical-align:middle;margin-right:4px;">归档</a>
+            <a href="{{ .Site.BaseURL }}about/"><img src="{{ "icons/96px-Character.webp" | relURL }}" alt="" style="width:24px;height:24px;vertical-align:middle;margin-right:4px;">关于</a>
         </nav>
         <button class="theme-toggle" id="themeToggle" title="切换主题">
             <span class="icon-sun">☀️</span>

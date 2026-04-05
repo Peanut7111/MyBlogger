@@ -117,28 +117,7 @@ body {
 .triforce-icon {
   width: 40px;
   height: 35px;
-  position: relative;
-}
-
-.triforce-icon::before,
-.triforce-icon::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 35px solid var(--zelda-gold-dark);
-}
-
-.triforce-icon::before {
-  top: 0;
-  left: 0;
-}
-
-.triforce-icon::after {
-  top: 0;
-  right: 0;
+  vertical-align: middle;
 }
 
 .zelda-nav a {
@@ -460,6 +439,119 @@ body {
   padding: 0;
 }
 
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.article-content img[src*="Triforce"] {
+  width: 96px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.article-content img[src*="Triforce"] + em {
+  display: block;
+  text-align: center;
+}
+
+.article-content blockquote {
+  text-align: center;
+  border-left: none;
+  padding: 10px 20px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+/* ========== 三角力量传送过渡动画 ========== */
+.triforce-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background: radial-gradient(circle, rgba(0,0,0,0.95) 0%, rgba(10,10,10,0.98) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: triforce-fade 0.5s ease-in-out forwards;
+}
+
+.triforce-transition .triforce-portal {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  animation: triforce-spin 0.35s ease-in-out forwards;
+}
+
+.triforce-transition .triforce-portal img {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px #ffd700) drop-shadow(0 0 40px #ff8c00);
+}
+
+.triforce-transition .triforce-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  border: 3px solid #ffd700;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ring-expand 0.3s ease-out 0.1s forwards;
+  box-shadow: 0 0 30px #ffd700, inset 0 0 30px rgba(255,215,0,0.3);
+}
+
+.triforce-transition .triforce-ring:nth-child(2) {
+  width: 260px;
+  height: 260px;
+  animation-delay: 0.18s;
+  border-color: rgba(255,215,0,0.5);
+}
+
+.triforce-transition .triforce-ring:nth-child(3) {
+  width: 320px;
+  height: 320px;
+  animation-delay: 0.28s;
+  border-color: rgba(255,215,0,0.3);
+}
+
+@keyframes triforce-fade {
+  0% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes triforce-spin {
+  0% { transform: rotate(0deg) scale(0.5); opacity: 0; }
+  30% { transform: rotate(180deg) scale(1); opacity: 1; }
+  70% { transform: rotate(360deg) scale(1); opacity: 1; }
+  100% { transform: rotate(360deg) scale(1.5); opacity: 0; }
+}
+
+@keyframes ring-expand {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* 页面内容淡入 */
+.main-content {
+  animation: content-fadein 0.3s ease-out 0.15s both;
+}
+
+@keyframes content-fadein {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* 代码块行号样式（心形生命值） */
 .article-content .chroma .ln {
   display: inline-block;
@@ -768,4 +860,37 @@ body {
     height: 36px;
     font-size: 1rem;
   }
+}
+
+/* ========== 呀哈哈 Easter Egg ========== */
+body .korok-zone {
+  position: fixed;
+  opacity: 0;
+  z-index: 999;
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+body .korok-zone:hover {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+body .korok-zone.korok-locked {
+  opacity: 1;
+  animation: korok-shake 0.5s ease;
+}
+
+@keyframes korok-shake {
+  0%, 100% { transform: scale(1.3) rotate(0deg); }
+  20% { transform: scale(1.3) rotate(-15deg); }
+  40% { transform: scale(1.3) rotate(15deg); }
+  60% { transform: scale(1.3) rotate(-10deg); }
+  80% { transform: scale(1.3) rotate(10deg); }
+}
+
+body .korok-zone img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
 }

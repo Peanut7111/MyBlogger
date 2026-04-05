@@ -4,8 +4,6 @@ date: 2026-04-03
 draft: false
 ---
 
-# 👤 关于 Peanut
-
 一只 INFJ  
 希望能活得久一点
 
