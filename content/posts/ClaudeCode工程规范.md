@@ -48,51 +48,30 @@ description: "总结一套模板化的工程开发流程，让 Claude Code 的�
 
 ```
 项目名称/
-├── .claude/                    # Claude Code 配置
-│   ├── rules/                 # 项目级规则（可选，覆写用户级）
-│   │   ├── coding-style.md    # 编码规范
-│   │   ├── git-workflow.md    # Git 流程
-│   │   └── security.md        # 安全规范
-│   ├── agents/                # 项目专用 Agent
-│   └── settings.json           # 项目配置
-├── docs/                       # 文档
-│   ├── ARCHITECTURE.md        # 架构设计
-│   ├── API.md                 # 接口文档
-│   └── DEPLOY.md              # 部署说明
-├── src/                        # 源代码
-├── tests/                      # 测试
-├── scripts/                    # 脚本
-├── CLAUDE.md                   # 项目说明（必须）
-├── README.md                   # 入口文档
-├── .gitignore
-└── package.json
+├── .claude/
+│   ├── rules/          # 规则文件
+│   └── agents/         # Agent 配置
+├── docs/               # 文档目录
+├── src/                # 源代码
+├── tests/              # 测试文件
+├── CLAUDE.md           # 项目说明
+└── README.md           # 入口文档
 ```
 
 ### Hugo 博客项目模板
 
 ```
 博客名称/
-├── .claude/
-│   ├── rules/                 # 博客专用规则
-│   └── settings.json
-├── archetypes/                 # 内容模版
-│   └── default.md
-├── content/                   # 文章内容
+├── .claude/            # Claude Code 配置
+├── content/            # 文章内容
 │   ├── posts/
 │   ├── about/
 │   └── archive/
-├── layouts/                   # 模板文件
-│   ├── _default/
-│   ├── partials/
-│   └── index.html
-├── static/                    # 静态资源
-│   ├── css/
-│   ├── icons/
-│   └── images/
-├── docs/                      # GitHub Pages 发布目录
+├── layouts/            # 模板文件
+├── static/             # 静态资源
+├── docs/               # 发布目录
 ├── config.yaml
-├── CLAUDE.md
-└── README.md
+└── CLAUDE.md
 ```
 
 ---
@@ -134,25 +113,16 @@ description: "总结一套模板化的工程开发流程，让 Claude Code 的�
 # 项目名称
 
 ## 基本信息
-- 技术栈
-- 目录结构
-- 关键配置路径
+- 技术栈 / 目录结构 / 配置路径
 
 ## 开发规范
-- 代码风格
-- Git 工作流
-- 测试要求
+- 代码风格 / Git 工作流 / 测试要求
 
 ## 常见问题
-- 已解决的坑
-- 注意事项
+- 已解决的坑 / 注意事项
 
-## 当前状态 / 未完成的事
-- 当前状态(最新完成的三件事，每次更新覆盖)
-- 未完成的事(用于重启对话后快速理解上下文)
-
-## 参考资料
-- 相关文档链接
+## 当前状态
+- 未完成的事（用于重启对话后快速理解上下文）
 ```
 
 ### 阶段 1.5：项目需求文档
@@ -168,23 +138,17 @@ description: "总结一套模板化的工程开发流程，让 Claude Code 的�
 # 项目名称 - 需求文档
 
 ## 项目背景
-- 项目目标
-- 目标用户
-- 核心价值
+- 项目目标 / 目标用户 / 核心价值
 
 ## 需求概述
-- 已完成的需求
-- 进行中的需求
-- 计划中的需求
+- 已完成 / 进行中 / 计划中的需求
 
 ## 详细需求
 - [ ] 需求1：描述
 - [ ] 需求2：描述
 
 ## 技术约束
-- 技术栈限制
-- 性能要求
-- 安全要求
+- 技术栈限制 / 性能要求 / 安全要求
 ```
 
 **使用方式**：
@@ -305,11 +269,11 @@ description: "总结一套模板化的工程开发流程，让 Claude Code 的�
 规范使用 Claude Code 的核心：
 
 ```
-模版化的目录结构     → 快速启动
-标准化的开发流程     → 质量保证
-Rules 定义规范       → 统一标准
-Hooks 强制执行       → 落实规范
-CLAUDE.md 记录上下文 → 知识沉淀
+模版化目录结构 → 快速启动
+标准化开发流程 → 质量保证
+Rules 定义规范 → 统一标准
+Hooks 强制执行 → 落实规范
+CLAUDE.md 记录 → 知识沉淀
 ```
 
 **目标**：每次新建工程都能快速进入状态，每次遇到问题都能在 CLAUDE.md 中找到答案，每次提交都符合规范。
