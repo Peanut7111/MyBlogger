@@ -8,7 +8,9 @@ draft: false
 
 ## 什么是 Everything Claude Code
 
-**Everything Claude Code** 是一个 Claude Code 的扩展市场，汇集了大量实用的技能（Skills），帮助你在不同场景下更好地与 AI 协作编程。
+**Everything Claude Code** 是一个 为AI Agent框架打造的性能优化系统。包括了技能（Skills）、本能（Instincts）、内存优化、持续学习、安全扫描以及研究优先的开发模式。并附有生产级的智能体（Agents）、钩子（Hooks）、命令（Commands）、规则（Rules）以及 MCP 配置  
+
+**Github地址：`https://github.com/affaan-m/everything-claude-code`**
 
 ## 主要特点
 
@@ -19,8 +21,10 @@ draft: false
 ## 如何使用
 
 1. 在 Claude Code 中安装你需要的技能
-2. 根据技能说明在合适的场景下调用
-3. 提升开发效率，专注更有价值的创造
+2. 根据技能说明在合适的场景下调用斜杠命令
+3. 本质上来说斜杠命令是技能skills的快捷入口
+
+>`目前我只会使用斜杠命令，而Everything Claude Code还有着跟多强大的功能待学习`
 
 ## 总结
 
@@ -29,3 +33,5 @@ Everything Claude Code 让 Claude Code 的能力得到极大扩展，是每位�
 ---
 
 *持续探索，让 AI 成为你最好的编程伙伴！*
+
+相关术语可参考 [**AI术语笔记**](/posts/ai术语笔记/)
