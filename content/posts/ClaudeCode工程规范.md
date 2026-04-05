@@ -1,7 +1,7 @@
 ---
 title: "如何规范地使用 Claude Code 开发工程"
 date: 2026-04-05
-tags: ["Claude Code", "工作流程"]
+tags: ["Claude Code"]
 categories: []
 description: "总结一套模板化的工程开发流程，让 Claude Code 的使用更加规范高效"
 ---

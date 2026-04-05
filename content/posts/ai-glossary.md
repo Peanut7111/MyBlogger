@@ -1,7 +1,7 @@
 ---
 title: "AI术语笔记"
 date: 2026-04-05T18:23:59+08:00
-tags: ["AI", "术语"]
+tags: ["AI术语"]
 categories: []
 description: "记录AI领域常见的英文术语和缩写，便于理解和使用"
 ---

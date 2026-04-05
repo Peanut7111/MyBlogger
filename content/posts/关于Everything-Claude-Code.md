@@ -1,7 +1,7 @@
 ---
 title: "关于Everything Claude Code"
 date: 2026-04-04
-tags: ["Claude Code", "工具"]
+tags: ["Claude Code"]
 description: "Everything Claude Code 是一个集合了丰富技能的 Claude Code 扩展市场，让 AI 助手如虎添翼。"
 draft: false
 ---
