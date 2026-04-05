@@ -34,4 +34,4 @@ Everything Claude Code 让 Claude Code 的能力得到极大扩展，是每位�
 
 *持续探索，让 AI 成为你最好的编程伙伴！*
 
-相关术语可参考 [**AI术语笔记**](/posts/ai术语笔记/)
+相关术语可参考 [**AI术语笔记**](/posts/ai-glossary/)
