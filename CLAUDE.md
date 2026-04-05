@@ -83,6 +83,7 @@ git push
 - 添加三角力量传送过渡动画
 - 第一篇博客添加了 Triforce.png 图片
 - 底部添加呀哈哈提示文字
+- 修复浅色模式下代码块文字不可见问题（2026-04-05）
 
 ## 已解决的问题（避免重复踩坑）
 - ❌ 不要用中文文件名做背景图（URL 编码问题）
@@ -95,3 +96,4 @@ git push
 - ❌ **markdown 里的 H1 会和模板的 H1 重复** → 解决：在 markdown 里去掉标题，用模板提供标题和图标
 - ❌ **korok zone hover 不生效** → 原因：`pointer-events: none` 阻止鼠标事件 → 解决：移除 `pointer-events: none`
 - ❌ **korok zone 集中在底部** → 原因：`position: absolute` 相对于 footer 定位 → 解决：改用 `position: fixed` 并随机分布
+- ❌ **中文文件名链接跳转404** → 原因：GitHub Pages 对 URL 编码处理有问题 → 解决：文章文件名用英文（如 `ai-glossary.md`），链接写 `/posts/ai-glossary/`

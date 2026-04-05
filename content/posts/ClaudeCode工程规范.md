@@ -318,4 +318,4 @@ CLAUDE.md 记录上下文 → 知识沉淀
 
 ## 相关阅读
 
-- [AI术语笔记](/posts/ai-glossary/) — 相关术语解释
+- [AI术语笔记](/MyBlogger/posts/ai-glossary/) — 相关术语解释
