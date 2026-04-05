@@ -18,7 +18,11 @@ hugo
 
 ## 文章写作
 
-文章放在 `content/posts/` 目录下，创建 `.md` 文件即可。
+文章放在 `content/posts/` 目录下。
+
+**新建文章模版**: `archetypes/default.md`
+- 使用 `hugo new posts/文章名.md` 会自动套用此模版
+- 包含 `title`、`date`、`draft`、`tags`、`categories`、`description` 字段
 
 ## 部署
 
